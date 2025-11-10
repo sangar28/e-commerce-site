@@ -11,12 +11,33 @@ interface FilterContextType {
   setMaxPrice: (price: number | undefined) => void;
   keyword: string;
   setKeyword: (keyword: string) => void;
-  categories: string[]; 
+  categories: string[];
   keywords: string[];
+  products: products[];
+  setProducts: (products: products[]) => void;
+  filter: string;
+  setFilter: (filter: string) => void;
+  currentPage: number;
+  setCurrenPage: (page: number) => void;
+  dropdownOpen: boolean;
+  setDropdownOpen: (open: boolean) => void;
+  itemsPerPage: number;
 }
 
 interface childrenType {
   children: React.ReactNode;
+}
+
+interface productType {
+  id: number;
+  title: string;
+  description: string;
+  category: string;
+  price: number;
+}
+
+interface products {
+  products: productType[];
 }
 
 const FilterContext = createContext<FilterContextType | undefined>(undefined);
@@ -27,7 +48,7 @@ const FilterProvider = ({ children }: childrenType) => {
   const [minPrice, setMinPrice] = useState<number | undefined>(undefined);
   const [maxPrice, setMaxPrice] = useState<number | undefined>(undefined);
   const [keyword, setKeyword] = useState<string>("");
-  const [categories, setCategories] = useState<string[]>([]); 
+  const [categories, setCategories] = useState<string[]>([]);
   const [keywords] = useState<string[]>([
     "apple",
     "watch",
@@ -35,7 +56,12 @@ const FilterProvider = ({ children }: childrenType) => {
     "trend",
     "shoes",
     "shirt",
-  ]); 
+  ]);
+  const [products, setProducts] = useState<products[]>([]);
+  const [filter, setFilter] = useState<string>("all");
+  const [currentPage, setCurrenPage] = useState<number>(1);
+  const [dropdownOpen, setDropdownOpen] = useState<boolean>(true);
+  const itemsPerPage = 12;
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -67,14 +93,22 @@ const FilterProvider = ({ children }: childrenType) => {
         setMaxPrice,
         keyword,
         setKeyword,
-        categories, 
-        keywords, 
+        categories,
+        keywords,
+        products,
+        setProducts,
+        filter,
+        setFilter,
+        currentPage,
+        setCurrenPage,
+        dropdownOpen,
+        setDropdownOpen,
+        itemsPerPage,
       }}
     >
       {children}
     </FilterContext.Provider>
   );
 };
-
 export default FilterProvider;
 export { FilterContext };

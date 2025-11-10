@@ -1,16 +1,18 @@
-import { BrowserRouter as Router } from "react-router-dom";
 import Sidebar from "./components/sidebar/Sidebar";
 import FilterProvider from "./context/FilterContext";
 
-const App = () => {
+interface childrenType {
+  children: React.ReactNode;
+}
+
+const App = ({ children }: childrenType) => {
   return (
-    <Router>
-      <div className="flex flex-col min-h-screen">
-        <FilterProvider>
-          <Sidebar />
-        </FilterProvider>
-      </div>
-    </Router>
+    <div className="flex min-h-screen">
+      <FilterProvider>
+        <Sidebar />
+        <div>{children}</div>
+      </FilterProvider>
+    </div>
   );
 };
 export default App;

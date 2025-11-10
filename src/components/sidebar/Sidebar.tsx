@@ -5,7 +5,7 @@ import Keywords from "./Keywords";
 const Sidebar = () => {
   return (
     <div>
-      <div className="w-64 h-screen p-5">
+      <div className="w-64 min-h-screen p-5">
         <h1 className="text-2xl font-bold mb-10 mt-4">React Store</h1>
         <section>
           {/* search bar */}
