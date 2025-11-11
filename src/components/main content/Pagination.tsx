@@ -48,7 +48,7 @@ const Pagination = () => {
 
 
   return (
-    <div className="flex flex-col sm:flex-row justify-between items-center mt-5  ml-40">
+    <div className="flex flex-col sm:flex-row justify-between items-center mt-5  ">
       {/* previous button */}
       <button
         onClick={() => handlePageChange(currentPage - 1)}

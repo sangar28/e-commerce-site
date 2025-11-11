@@ -1,5 +1,5 @@
 import Filter from "./Filter";
-import FilterProducts from "./FIlterProcuts";
+import FilterProducts from "./FilterProcuts";
 import Pagination from "./Pagination";
 
 const MainContent = () => {

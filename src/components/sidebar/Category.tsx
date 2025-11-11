@@ -22,7 +22,6 @@ const Category = () => {
           {category}
         </label>
       ))}
-      <button onClick={() => setSelectedCategory("")} className="w-[80%] mt-2 font-semibold p-2 border rounded border-gray-200 shadow-sm" >clear</button>
     </div>
   );
 };

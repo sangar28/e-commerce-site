@@ -23,7 +23,7 @@ export interface FilterContextType {
   setDropdownOpen: (open: boolean) => void;
   itemsPerPage: number;
   productDetails: Product | null;
-  setProductDetails: (product: Product) => void;
+  setProductDetails: (product: Product | null) => void;
 }
 
 interface childrenType {
@@ -50,6 +50,11 @@ const FilterProvider = ({ children }: childrenType) => {
   const [maxPrice, setMaxPrice] = useState<number | undefined>(undefined);
   const [keyword, setKeyword] = useState<string>("");
   const [categories, setCategories] = useState<string[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [filter, setFilter] = useState<string>("all");
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
+  const [productDetails, setProductDetails] = useState<Product | null>(null);
   const [keywords] = useState<string[]>([
     "apple",
     "watch",
@@ -58,11 +63,6 @@ const FilterProvider = ({ children }: childrenType) => {
     "shoes",
     "shirt",
   ]);
-  const [products, setProducts] = useState<Product[]>([]);
-  const [filter, setFilter] = useState<string>("all");
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
-  const [productDetails, setProductDetails] = useState<Product | null>(null);
   const itemsPerPage = 12;
 
   useEffect(() => {

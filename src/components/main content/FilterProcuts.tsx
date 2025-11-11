@@ -3,7 +3,6 @@ import { FilterContext } from "../../context/FilterContext";
 import { type Product } from "../../context/FilterContext";
 import ProductCard from "./ProductCard";
 
-
 const FilterProducts = () => {
   const context = useContext(FilterContext);
   if (!context) {
@@ -102,7 +101,7 @@ const FilterProducts = () => {
       {" "}
       {/* Centering container: flex centers content, min-h ensures height */}
       {filteredProducts.length > 0 ? (
-        <div className="grid grid-cols-3 sm:grid-cols-4 gap-5 ml-40 p-5 w-full">
+        <div className="grid grid-cols-3 sm:grid-cols-4 gap-5  p-5 w-full">
           {" "}
           {/* Grid for products */}
           {filteredProducts.map((product) => (
@@ -111,7 +110,12 @@ const FilterProducts = () => {
               id={product.id}
               title={product.title}
               thumbnail={product.thumbnail}
-              price={product.price} category={""} rating={0} images={""} description={""}            />
+              price={product.price}
+              description={""}
+              category={""}
+              rating={0}
+              images={""}
+            />
           ))}
         </div>
       ) : (
