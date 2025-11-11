@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 
-interface FilterContextType {
+export interface FilterContextType {
   searchQuery: string;
   setSearchQuery: (query: string) => void;
   selectedCategory: string;
@@ -13,31 +13,32 @@ interface FilterContextType {
   setKeyword: (keyword: string) => void;
   categories: string[];
   keywords: string[];
-  products: products[];
-  setProducts: (products: products[]) => void;
+  products: Product[];
+  setProducts: (products: Product[]) => void;
   filter: string;
   setFilter: (filter: string) => void;
   currentPage: number;
-  setCurrenPage: (page: number) => void;
+  setCurrentPage: (page: number) => void;
   dropdownOpen: boolean;
   setDropdownOpen: (open: boolean) => void;
   itemsPerPage: number;
+  productDetails: Product | null;
+  setProductDetails: (product: Product) => void;
 }
 
 interface childrenType {
   children: React.ReactNode;
 }
 
-interface productType {
+export interface Product {
+  thumbnail: string;
   id: number;
   title: string;
-  description: string;
   category: string;
   price: number;
-}
-
-interface products {
-  products: productType[];
+  rating: number;
+  images: string;
+  description: string;
 }
 
 const FilterContext = createContext<FilterContextType | undefined>(undefined);
@@ -57,10 +58,11 @@ const FilterProvider = ({ children }: childrenType) => {
     "shoes",
     "shirt",
   ]);
-  const [products, setProducts] = useState<products[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [filter, setFilter] = useState<string>("all");
-  const [currentPage, setCurrenPage] = useState<number>(1);
-  const [dropdownOpen, setDropdownOpen] = useState<boolean>(true);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
+  const [productDetails, setProductDetails] = useState<Product | null>(null);
   const itemsPerPage = 12;
 
   useEffect(() => {
@@ -100,10 +102,12 @@ const FilterProvider = ({ children }: childrenType) => {
         filter,
         setFilter,
         currentPage,
-        setCurrenPage,
+        setCurrentPage,
         dropdownOpen,
         setDropdownOpen,
         itemsPerPage,
+        productDetails,
+        setProductDetails,
       }}
     >
       {children}

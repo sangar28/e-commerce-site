@@ -27,7 +27,7 @@ const Search = () => {
       <div className="flex items-center gap-3 ">
         <input
           type="text"
-          placeholder="Min"
+          placeholder="Min $"
           className="border px-2 py-1 outline-none  w-full"
           value={minPrice?.toString() || ""}
           onChange={(e) =>
@@ -36,7 +36,7 @@ const Search = () => {
         />
         <input
           type="text"
-          placeholder="Max"
+          placeholder="Max $"
           className="border px-2 py-1 outline-none  w-full"
           value={maxPrice?.toString() || ""}
           onChange={(e) =>

@@ -1,10 +1,14 @@
 import Filter from "./Filter";
+import FilterProducts from "./FIlterProcuts";
+import Pagination from "./Pagination";
 
 const MainContent = () => {
   return (
-    <section className="lg: w-220 sm:w-160 xs:w-[20rem] p-5">
+    <section className="w-[1000px]">
       <div className="mb-5">
         <Filter />
+        <FilterProducts />
+        <Pagination />
       </div>
     </section>
   );

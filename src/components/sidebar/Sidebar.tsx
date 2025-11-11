@@ -22,7 +22,7 @@ const Sidebar = () => {
             <Keywords/>
           </section>
         </section>
-        <button className="w-full py-2 bg-black text-white rounded mt-5 mb-16">
+        <button className="w-full py-2 bg-black text-white rounded mt-5 mb-16" >
           Reset Fillters
         </button>
       </div>
