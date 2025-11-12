@@ -13,6 +13,7 @@ const Search = () => {
     setMinPrice,
     maxPrice,
     setMaxPrice,
+    setKeyword,
   } = context;
 
   return (
@@ -22,7 +23,10 @@ const Search = () => {
         className="w-full border px-2 py-1 mb-3 outline-none"
         placeholder="Search Product"
         value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
+        onChange={(e) => {
+          setSearchQuery(e.target.value);
+          setKeyword(e.target.value);
+        }}
       />
       <div className="flex items-center gap-3 ">
         <input

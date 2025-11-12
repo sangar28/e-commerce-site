@@ -20,7 +20,20 @@ const FilterProducts = () => {
     maxPrice,
     searchQuery,
     filter,
+    setCurrentPage,
   } = context;
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [
+    selectedCategory,
+    minPrice,
+    maxPrice,
+    searchQuery,
+    keyword,
+    filter,
+    setCurrentPage,
+  ]);
 
   // Fetching procducts
   useEffect(() => {
@@ -101,7 +114,7 @@ const FilterProducts = () => {
       {" "}
       {/* Centering container: flex centers content, min-h ensures height */}
       {filteredProducts.length > 0 ? (
-        <div className="grid grid-cols-3 sm:grid-cols-4 gap-5  p-5 w-full">
+        <div className="grid grid-cols-4 gap-5 mb-2 w-full ">
           {" "}
           {/* Grid for products */}
           {filteredProducts.map((product) => (

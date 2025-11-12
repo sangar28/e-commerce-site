@@ -7,12 +7,12 @@ type ProductCardType = Product & {
 const ProductCard = ({ id, thumbnail, price, title }: ProductCardType) => {
   // Use imported Product
   return (
-    <div className="border border-gray-200 shadow-lg transition-transform ease-linear transform hover:scale-105 rounded">
+    <div className="border border-gray-200 shadow-lg transition-transform ease-linear transform hover:scale-105 rounded p-2">
       <Link to={`/products/${id}`}>
         <img
           src={thumbnail}
           alt={title}
-          className="w-full h-32 object-cover mb-2"
+          className="w-36 h-36 object-cover mx-auto"
         />
         <h2 className="font-bold text-center min-h-10 flex justify-center items-cente">
           {title}
